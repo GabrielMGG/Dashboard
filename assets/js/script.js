@@ -14,7 +14,7 @@ let IdOpen;// id do usuário cujo modal está aberto
 async function carregarDadosApi() {
     try {
         // URL com os parametros atuais de busca, limite e pulo
-        const response = await fetch(`https://dummyjson.com//users/search?q=${searchUser}&limit=${userPerPage}&skip=${skip}`);
+        const response = await fetch(`https://dummyjson.com/users/search?q=${searchUser}&limit=${userPerPage}&skip=${skip}`);
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -68,33 +68,41 @@ async function mudarPagina() {
         if (pagAtual == totalPag) {
             // se ja esta na ultima pagina, volta pra primeira
             pagAtual = 1;
-        } else {
+            skip = (pagAtual - 1) * userPerPage;
+            atualizarActive();
+            main();
+        }
+        else {
             // senao, avanca uma pagina
             pagAtual++;
+            skip = (pagAtual - 1) * userPerPage;
+            atualizarActive();
+            main();
         }
-        skip = (pagAtual - 1) * userPerPage;
-        atualizarActive();
-        main();
     });
 
     anter.addEventListener('click', () => {
         if (pagAtual == 1) {
             // se ja esta na primeira pagina, vai pra ultima
             pagAtual = totalPag;
-        } else {
+            skip = (pagAtual - 1) * userPerPage;
+            atualizarActive();
+            main();
+        }
+        else {
             // senao, volta uma pagina
             pagAtual--;
+            skip = (pagAtual - 1) * userPerPage;
+            atualizarActive();
+            main();
         }
-        skip = (pagAtual - 1) * userPerPage;
-        atualizarActive();
-        main();
     });
 
     // clique direto em um numero de pagina
     dataPag.forEach((botao) => {
         botao.addEventListener('click', () => {
             pags = botao.dataset.page;
-            pagAtual = parseInt(pags); // converte string pra numero
+            pagAtual = parseInt(pags);
             skip = (pagAtual - 1) * userPerPage;
             atualizarActive();
             main();
