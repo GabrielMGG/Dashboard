@@ -1,0 +1,337 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f9;
+    padding: 40px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+/* Controles de Busca e Filtro */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.search-box input {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 300px;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+}
+
+.filters select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+}
+
+/* Estilização da Tabela */
+.table-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #fcfcfc;
+    text-align: left;
+    padding: 15px;
+    color: #666;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Badges de Status */
+.badge {
+    padding: 5px 12px;
+    border-radius: 4px;
+    color: white;
+    font-weight: 500;
+    font-size: 12px;
+    display: inline-block;
+}
+
+.status-active {
+    background-color: #e6fffa;
+    color: #38a169;
+}
+.status-inactive { 
+    background-color: #ffeee6; 
+    color: #dc3545;
+}
+
+/* Botões de Ação */
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+button {
+    padding: 6px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.btn-edit { background-color: #007bff; color: white; }
+.btn-edit:hover { background-color: #0056b3; }
+
+.btn-view { background-color: #e0e0e0; color: #555; }
+.btn-view:hover { background-color: #d0d0d0; }
+
+/* Paginação */
+.pagination {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.pagination button {
+    background: white;
+    border: 1px solid #ddd;
+    color: #333;
+    padding: 8px 15px;
+}
+
+.pagination button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination button:hover:not(.active) {
+    background-color: #f8f9fa;
+}
+
+/* Estilos do Modal Dialog */
+dialog {
+    border: none;
+    border-radius: 8px;
+    padding: 0;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+/* Fundo escuro do modal */
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(1px);
+}
+
+/* Divisores horizontais */
+.divider {
+    border: none;
+    border-bottom: 1px solid #edf2f7;
+    margin: 0;
+}
+
+/* Cabeçalho */
+.modal-header {
+    padding: 24px 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+}
+
+.user-icon-circle {
+    width: 60px;
+    height: 60px;
+    background-color: #e6f0ff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0061ff;
+}
+
+.modal-header h2 {
+    font-size: 20px;
+    color: #1a202c;
+    font-weight: 600;
+}
+
+.close-modal {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #a0aec0;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.close-modal:hover {
+    color: #1a202c;
+}
+
+/* Corpo do Modal */
+.modal-body {
+    padding: 24px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.info-icon {
+    width: 24px;
+    color: #0061ff;
+    display: flex;
+    justify-content: center;
+}
+
+.text-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.text-group label {
+    font-size: 14px;
+    color: #718096;
+    margin-bottom: 4px;
+}
+
+.text-group span {
+    font-size: 16px;
+    color: #1a202c;
+    font-weight: 500;
+}
+
+/* Emblema de Status */
+.badge {
+    padding: 6px 14px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+
+.status-dot-ativo {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #38a169;
+}
+.status-dot-inativo {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #dc3545;
+}
+
+/* Rodapé */
+.modal-footer {
+    padding: 16px 24px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#btn-edit {
+    background-color: #e6f0ff;
+    color: #0061ff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.2s;
+}
+
+#btn-edit:hover {
+    background-color: #d1e3ff;
+}
+
+.text-group input{
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 15px;
+    color: #1a202c;
+    width: 100%;
+    margin-top: 4px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+
+/* Efeito ao clicar no campo */
+.text-group input:focus{
+    border-color: #0061ff;
+    box-shadow: 0 0 0 3px rgba(0, 97, 255, 0.1);
+}
+
+/* Ajuste do botão de salvar */
+#btn-save {
+    background-color: #0061ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+#btn-save:hover {
+    background-color: #004ecc;
+}
